@@ -1,1 +1,98 @@
-@import 'nullstyle.scss'
+@import 'nullstyle.scss';
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;700&display=swap');
+
+body {
+    //background: linear-gradient(320deg, #eb92be, #ffef78, #63cdb4);
+    background: linear-gradient(320deg, #ffe324, #ffb533);
+    font-family: 'Dosis', sans-serif;
+    display: flex;
+    font-display: swap;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    width: inherit;
+}
+
+.calc {
+    border-radius: 1rem;
+    box-shadow: 0 4px 30px rgb(35, 35, 35, 0.1);
+    color: #232323;
+    backdrop-filter: blur(4px);
+    background-color: rgb(255, 255, 255, 0.2);
+    border: 0.0625rem solid rgb(252, 255, 255, 0.14);
+    flex-basis: 25rem;
+    height: 33.75rem;
+    padding: 1.25rem 2.1875rem;
+
+    &__screen {
+        font-weight: 700;
+        backdrop-filter: blur(5.5px);
+        background: rgba(255, 255, 255, 0.75);
+        border: 0.0625rem solid rgb(255, 255, 255, 0.01);
+        border-radius: 1rem;
+        box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+        font-size: 2.25rem;
+        overflow: auto;
+        padding: 1.25rem;
+        text-align: right;
+        width: 20.375rem;
+    }
+
+    &__buttons {}
+
+    &__button-row {
+        display: flex;
+        justify-content: space-between;
+        margin: 5% 0;
+    }
+
+    &__button {
+        backdrop-filter: blur(5.5px);
+        background-color: rgba(255, 255, 255, 0.75);
+        border: 0.0625rem solid rgba(255, 255, 255, 0.01);
+        border-radius: 1rem;
+        box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+        color: #232323;
+        flex-basis: 20%;
+        font-family: inherit;
+        font-size: 1.5rem;
+        height: 4.0625rem;
+        font-weight: 700;
+
+        &:last-child {
+            backdrop-filter: blur(5.5px);
+            border: 0.0625rem solid rgba(255, 255, 255, 0.01);
+            border-radius: 1rem;
+            box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+            background: #404040;
+            color: #FFF;
+
+            &:hover {
+                background-color: inherit;
+                color: inherit;
+            }
+        }
+
+        &:hover {
+            background-color: inherit;
+        }
+
+        &:active {
+            background-color: #ffef78;
+        }
+    }
+}
+
+.double {
+    flex-basis: 47%;
+}
+
+.triple {
+    flex-basis: 73%;
+}
