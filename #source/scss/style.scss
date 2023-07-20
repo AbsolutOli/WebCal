@@ -38,13 +38,103 @@ body {
         border-radius: 1rem;
         box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
         font-size: 2.25rem;
-        overflow: auto;
+        overflow: clip;
         padding: 1.25rem;
         text-align: right;
         width: 20.375rem;
     }
 
-    &__buttons {}
+    &__buttons {
+        position: relative;
+    }
+
+    &__side-buttons {
+        display: block;
+        border: 0.0625rem solid rgb(252, 255, 255, 0.14);
+        box-shadow: 0 4px 30px rgb(35, 35, 35, 0.1);
+        color: #232323;
+        backdrop-filter: blur(4px);
+        background-color: rgba(255, 255, 255, 0.2);
+        position: absolute;
+        z-index: -1;
+        //width: 50%;
+        //width: 3%;
+        height: 260.53px;
+        left: 110%;
+        //top: -4.3%;16.7%
+        top: 16.7%;
+
+        &::before,
+        &_arrow {
+            content: "";
+            position: absolute;
+            height: 104%;
+            top: -2%;
+            background-color: rgb(64, 64, 64, 1);
+            border: 0.0625rem solid rgb(252, 255, 255, 0);
+        }
+
+        &::before {
+            left: -5px;
+            width: 10px;
+            border-radius: 20% 0 0 20%/5% 0 0 5%;
+        }
+
+        &_arrow {
+            width: 20px;
+            border-radius: 36% 0 0 36%/5% 0 0 5%;
+            transform: rotate(180deg);
+            right: -19px; //-10px;
+            cursor: pointer;
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 18px;
+                height: 18px;
+                top: 47.5%;
+                left: 0;
+                background: url(/img/icons/arrow.png) center / 100% no-repeat;
+                //transform: rotate(180deg); //on when active
+            }
+        }
+    }
+
+    &__button-row_side-panel {
+        display: none;
+        //display: flex; //on when active
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+        align-items: center;
+        padding: 10% 49.205px; //10% 0
+    }
+
+    .active .calc__side-buttons_arrow::after {
+        transform: rotate(180deg);
+    }
+
+    .active .calc__button-row_side-panel {
+        display: flex;
+    }
+
+    &__button_sidebutton {
+        backdrop-filter: blur(5.5px);
+        background-color: rgba(255, 255, 255, 0.75);
+        border: 0.0625rem solid rgba(255, 255, 255, 0.01);
+        border-radius: 1rem;
+        box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+        color: #232323;
+        font-family: inherit;
+        font-size: 1.5rem;
+        height: 4.0625rem;
+        font-weight: 700;
+        width: 65.6px; //40%;
+
+        &:not(:last-child) {
+            margin-bottom: 25%;
+        }
+    }
 
     &__button-row {
         display: flex;
@@ -86,6 +176,8 @@ body {
         &:active {
             background-color: #ffef78;
         }
+
+
     }
 }
 

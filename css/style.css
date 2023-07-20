@@ -143,10 +143,100 @@ body {
   -webkit-box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
           box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
   font-size: 2.25rem;
-  overflow: auto;
+  overflow: clip;
   padding: 1.25rem;
   text-align: right;
   width: 20.375rem;
+}
+.calc__buttons {
+  position: relative;
+}
+.calc__side-buttons {
+  display: block;
+  border: 0.0625rem solid rgba(252, 255, 255, 0.14);
+  -webkit-box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+          box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+  color: #232323;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  background-color: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  z-index: -1;
+  height: 260.53px;
+  left: 110%;
+  top: 16.7%;
+}
+.calc__side-buttons::before, .calc__side-buttons_arrow {
+  content: "";
+  position: absolute;
+  height: 104%;
+  top: -2%;
+  background-color: rgb(64, 64, 64);
+  border: 0.0625rem solid rgba(252, 255, 255, 0);
+}
+.calc__side-buttons::before {
+  left: -5px;
+  width: 10px;
+  border-radius: 20% 0 0 20%/5% 0 0 5%;
+}
+.calc__side-buttons_arrow {
+  width: 20px;
+  border-radius: 36% 0 0 36%/5% 0 0 5%;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  right: -19px;
+  cursor: pointer;
+}
+.calc__side-buttons_arrow::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 47.5%;
+  left: 0;
+  background: url(/img/icons/arrow.png) center/100% no-repeat;
+}
+.calc__button-row_side-panel {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10% 49.205px;
+}
+.calc .active .calc__side-buttons_arrow::after {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.calc .active .calc__button-row_side-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.calc__button_sidebutton {
+  -webkit-backdrop-filter: blur(5.5px);
+          backdrop-filter: blur(5.5px);
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.01);
+  border-radius: 1rem;
+  -webkit-box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+          box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+  color: #232323;
+  font-family: inherit;
+  font-size: 1.5rem;
+  height: 4.0625rem;
+  font-weight: 700;
+  width: 65.6px;
+}
+.calc__button_sidebutton:not(:last-child) {
+  margin-bottom: 25%;
 }
 .calc__button-row {
   display: -webkit-box;
