@@ -18,6 +18,8 @@ function buttonClick(value) {
     console.log(`runningTotal = ${runningTotal} + ${typeof (buffer)} \n buffer = ${buffer} \n previousOperator = ${previousOperator}`);
 
     screen.innerText = buffer;
+
+    screen.scroll(1000, 0);
 }
 
 function handleSymbol(symbol) {

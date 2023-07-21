@@ -90,6 +90,11 @@ h6 {
 }
 
 /*--------------------*/
+.calc__screen::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 body {
   background: linear-gradient(320deg, #ffe324, #ffb533);
   font-family: "Dosis", sans-serif;
@@ -143,7 +148,7 @@ body {
   -webkit-box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
           box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
   font-size: 2.25rem;
-  overflow: clip;
+  overflow: auto;
   padding: 1.25rem;
   text-align: right;
   width: 20.375rem;
@@ -173,6 +178,10 @@ body {
   top: -2%;
   background-color: rgb(64, 64, 64);
   border: 0.0625rem solid rgba(252, 255, 255, 0);
+  -webkit-backdrop-filter: blur(5.5px);
+          backdrop-filter: blur(5.5px);
+  -webkit-box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+          box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
 }
 .calc__side-buttons::before {
   left: -5px;
@@ -195,6 +204,15 @@ body {
   top: 47.5%;
   left: 0;
   background: url(/img/icons/arrow.png) center/100% no-repeat;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.3s ease 0s;
+  transition: -webkit-transform 0.3s ease 0s;
+  transition: transform 0.3s ease 0s;
+  transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
+}
+.calc__side-buttons_arrow:hover {
+  background-color: rgb(53, 53, 53);
 }
 .calc__button-row_side-panel {
   display: none;
@@ -214,6 +232,10 @@ body {
 .calc .active .calc__side-buttons_arrow::after {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+  -webkit-transition: -webkit-transform 0.3s ease 0s;
+  transition: -webkit-transform 0.3s ease 0s;
+  transition: transform 0.3s ease 0s;
+  transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
 }
 .calc .active .calc__button-row_side-panel {
   display: -webkit-box;
@@ -237,6 +259,12 @@ body {
 }
 .calc__button_sidebutton:not(:last-child) {
   margin-bottom: 25%;
+}
+.calc__button_sidebutton:hover {
+  background-color: inherit;
+}
+.calc__button_sidebutton:active {
+  background-color: #ffef78;
 }
 .calc__button-row {
   display: -webkit-box;

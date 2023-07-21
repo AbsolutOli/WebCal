@@ -1,6 +1,11 @@
 @import 'nullstyle.scss';
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;700&display=swap');
 
+.calc__screen::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
 body {
     //background: linear-gradient(320deg, #eb92be, #ffef78, #63cdb4);
     background: linear-gradient(320deg, #ffe324, #ffb533);
@@ -38,7 +43,7 @@ body {
         border-radius: 1rem;
         box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
         font-size: 2.25rem;
-        overflow: clip;
+        overflow: auto;
         padding: 1.25rem;
         text-align: right;
         width: 20.375rem;
@@ -72,6 +77,8 @@ body {
             top: -2%;
             background-color: rgb(64, 64, 64, 1);
             border: 0.0625rem solid rgb(252, 255, 255, 0);
+            backdrop-filter: blur(5.5px);
+            box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
         }
 
         &::before {
@@ -95,7 +102,12 @@ body {
                 top: 47.5%;
                 left: 0;
                 background: url(/img/icons/arrow.png) center / 100% no-repeat;
-                //transform: rotate(180deg); //on when active
+                transform: rotate(0deg); //on when active
+                transition: transform 0.3s ease 0s;
+            }
+
+            &:hover {
+                background-color: rgb(53, 53, 53);
             }
         }
     }
@@ -112,6 +124,7 @@ body {
 
     .active .calc__side-buttons_arrow::after {
         transform: rotate(180deg);
+        transition: transform 0.3s ease 0s;
     }
 
     .active .calc__button-row_side-panel {
@@ -133,6 +146,14 @@ body {
 
         &:not(:last-child) {
             margin-bottom: 25%;
+        }
+
+        &:hover {
+            background-color: inherit;
+        }
+
+        &:active {
+            background-color: #ffef78;
         }
     }
 
