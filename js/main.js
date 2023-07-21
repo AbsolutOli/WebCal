@@ -2,15 +2,21 @@ let runningTotal = 0;
 let buffer = "0";
 let previousOperator;
 
+
 const screen = document.querySelector('.calc__screen')
-console.log(screen);
+
 
 function buttonClick(value) {
-    if (isNaN(value)) {
+    if (isNaN(value) || value === "") {
+        console.log(`some sym ${value}`);
         handleSymbol(value);
+
     } else {
+        console.log(`some num ${value}`);
         handleNumber(value);
     }
+    console.log(`runningTotal = ${runningTotal} + ${typeof (buffer)} \n buffer = ${buffer} \n previousOperator = ${previousOperator}`);
+
     screen.innerText = buffer;
 }
 
@@ -26,7 +32,7 @@ function handleSymbol(symbol) {
             }
             flushOperation(parseInt(buffer));
             previousOperator = null;
-            buffer = runningTotal;
+            buffer = String(runningTotal);
             runningTotal = 0;
             break;
         case '<':
@@ -45,11 +51,35 @@ function handleSymbol(symbol) {
         case '÷':
             handleMath(symbol);
             break;
+        case '%':
+        case '√':
+        case 'x²':
+            if (buffer === '0') {
+                return;
+            }
+            handleMathWithOneNumber(symbol);
+            previousOperator = null;
+            buffer = String(runningTotal);
+            runningTotal = 0;
+            break;
+    }
+}
+
+function handleMathWithOneNumber(symbol) {
+    previousOperator = symbol;
+    if (previousOperator === '%') {
+        runningTotal = parseFloat(buffer) / 100;
+    }
+    if (previousOperator === '√') {
+        runningTotal = Math.sqrt(parseFloat(buffer));
+    }
+    if (previousOperator === 'x²') {
+        runningTotal = parseInt(buffer) * parseInt(buffer);
     }
 }
 
 function handleMath(symbol) {
-    if (buffer === '0') {
+    if (buffer === '0' && runningTotal === 0) {
         return;
     }
 
@@ -57,8 +87,6 @@ function handleMath(symbol) {
 
     if (runningTotal === 0) {
         runningTotal = intBuffer;
-    } else {
-        flushOperation(intBuffer);
     }
 
     previousOperator = symbol;
@@ -87,7 +115,12 @@ function handleNumber(numberString) {
 
 function init() {
     document.querySelector('.calc__buttons').addEventListener('click', function (event) {
-        buttonClick(event.target.innerText);
+        if (event.target.classList.contains('calc__side-buttons_arrow')) {
+            event.target.parentNode.classList.toggle('active');
+        } else {
+            buttonClick(event.target.innerText);
+            console.log(event);
+        }
     })
 }
 
