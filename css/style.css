@@ -90,11 +90,6 @@ h6 {
 }
 
 /*--------------------*/
-.calc__screen::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-}
-
 body {
   background: linear-gradient(320deg, #ffe324, #ffb533);
   font-family: "Dosis", sans-serif;
@@ -137,6 +132,163 @@ body {
       flex-basis: 25rem;
   height: 33.75rem;
   padding: 1.25rem 2.1875rem;
+  position: relative;
+}
+.calc__history {
+  position: absolute;
+  display: block;
+  border: 0.0625rem solid rgba(252, 255, 255, 0.14);
+  -webkit-box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+          box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+  color: #232323;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: -1;
+  height: 30.3456rem;
+  right: 100%;
+  top: 1.25rem;
+}
+.calc .history__body {
+  height: 100%;
+  display: none;
+}
+.calc .history__list {
+  height: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+  padding: 1.25rem 39.2048px;
+}
+.calc .history__list::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.calc .history__list {
+  -ms-overflow-style: none;
+}
+.calc .history__list {
+  overflow: -moz-scrollbars-none;
+}
+.calc .history__item {
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 150px;
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 0.625rem 0.9375rem;
+  -webkit-box-shadow: 0 4px 10px rgba(35, 35, 35, 0.1);
+          box-shadow: 0 4px 10px rgba(35, 35, 35, 0.1);
+}
+.calc .history__item:not(:last-child) {
+  margin: 0 0 0.625rem 0;
+}
+.calc .history__item:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.calc .history__delete {
+  display: inline-block;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 20px;
+          flex: 0 0 20px;
+  height: 25px;
+  background: url(../img/icons/trash.svg) left/100% no-repeat;
+  -webkit-transition: all 0.1s ease 0s;
+  transition: all 0.1s ease 0s;
+}
+.calc .history__delete:hover {
+  background: url(../img/icons/trash-hover.svg) left/100% no-repeat;
+}
+.calc .history__content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  padding: 0 0 0 10px;
+  overflow: hidden;
+  position: relative;
+}
+.calc .history__content::before {
+  content: "";
+  position: absolute;
+  display: block;
+  z-index: 2;
+  width: 92%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.5);
+  bottom: 52.5%;
+  right: 0;
+}
+.calc .history__operaion-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 18px;
+  padding: 0 0 5px 0;
+  margin: 0 0 5px 0;
+}
+.calc .history__answer-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: right;
+  font-size: 24px;
+}
+.calc .history::before, .calc .history__side-buttons_arrow {
+  content: "";
+  position: absolute;
+  height: 102%;
+  top: -1%;
+  background-color: rgb(64, 64, 64);
+  border: 0.0625rem solid rgba(252, 255, 255, 0);
+  -webkit-backdrop-filter: blur(5.5px);
+          backdrop-filter: blur(5.5px);
+  -webkit-box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+          box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+}
+.calc .history::before {
+  right: -11px;
+  width: 13px;
+  border-radius: 0 90% 90% 0/0 3% 3% 0;
+}
+.calc .history__side-buttons_arrow {
+  width: 20px;
+  border-radius: 25% 27% 36% 25%/1% 3% 3% 1%;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  left: -14px;
+  cursor: pointer;
+}
+.calc .history__side-buttons_arrow::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 47.5%;
+  left: 0;
+  background: url(../img/icons/arrow.png) center/100% no-repeat;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transition: -webkit-transform 0.3s ease 0s;
+  transition: -webkit-transform 0.3s ease 0s;
+  transition: transform 0.3s ease 0s;
+  transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
+}
+.calc .history__side-buttons_arrow:hover {
+  background-color: rgb(53, 53, 53);
+}
+.calc .active .history__side-buttons_arrow::after {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.3s ease 0s;
+  transition: -webkit-transform 0.3s ease 0s;
+  transition: transform 0.3s ease 0s;
+  transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
+}
+.calc .active .history__body {
+  display: block;
 }
 .calc__screen {
   font-weight: 700;
@@ -152,6 +304,16 @@ body {
   padding: 1.25rem;
   text-align: right;
   width: 20.375rem;
+}
+.calc__screen::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.calc__screen {
+  -ms-overflow-style: none;
+}
+.calc__screen {
+  overflow: -moz-scrollbars-none;
 }
 .calc__buttons {
   position: relative;
@@ -184,13 +346,13 @@ body {
           box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
 }
 .calc__side-buttons::before {
-  left: -5px;
-  width: 10px;
-  border-radius: 20% 0 0 20%/5% 0 0 5%;
+  left: -8px;
+  width: 13px;
+  border-radius: 100% 0 0 100%/5% 0 0 5%;
 }
 .calc__side-buttons_arrow {
   width: 20px;
-  border-radius: 36% 0 0 36%/5% 0 0 5%;
+  border-radius: 36% 25% 25% 36%/5% 1% 1% 5%;
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
   right: -19px;
@@ -203,7 +365,7 @@ body {
   height: 18px;
   top: 47.5%;
   left: 0;
-  background: url(/img/icons/arrow.png) center/100% no-repeat;
+  background: url(../img/icons/arrow.png) center/100% no-repeat;
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
   -webkit-transition: -webkit-transform 0.3s ease 0s;
