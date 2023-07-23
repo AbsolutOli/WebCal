@@ -150,6 +150,7 @@ body {
   top: 1.25rem;
 }
 .calc .history__body {
+  min-width: 228.39px;
   height: 100%;
   display: none;
 }

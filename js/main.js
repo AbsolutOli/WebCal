@@ -17,7 +17,7 @@ function buttonClick(value) {
     }
 
     screen.innerText = buffer;
-    console.log(`buffer = ${buffer} \n screen.innerText = ${screen.innerText}`);
+    //console.log(`buffer = ${buffer} \n screen.innerText = ${screen.innerText}`);
 
     screen.scroll(1000, 0);
 
@@ -168,11 +168,10 @@ function init() {
         }
     })
     document.querySelector('.calc__history').addEventListener('click', function (event) {
-        console.log(screen.innerText);
         if (event.target.classList.contains('history__side-buttons_arrow')) {
             event.target.parentNode.classList.toggle('active');
         } else if (event.target.classList.contains('history__delete')) {
-            console.log('Delet this item')
+            event.target.closest('.history__item').remove();
         } else if (event.target.closest('.history__item')) {
 
             let listItem = event.target.closest('.history__item').lastElementChild.lastElementChild.innerText.substring(2);
@@ -181,10 +180,6 @@ function init() {
                 buffer = "0";
                 buttonClick(listItem);
             }
-            // let listItem = event.target.closest('.history__item').lastElementChild.lastElementChild.innerText.substring(2);
-            // console.log(listItem);
-            // screen.innerText = listItem;
-            // buttonClick(listItem)
         }
     })
 }
