@@ -1,6 +1,6 @@
 let runningTotal = 0;
 let buffer = "0";
-let previousOperator;
+let previousOperator = null;
 
 let historyItemOperation = null;
 let historyItemSolution = "= ";
@@ -15,9 +15,9 @@ function buttonClick(value) {
     } else {
         handleNumber(value);
     }
-    console.log(`historyItemOperation = ${historyItemOperation} \n historyItemSolution = ${historyItemSolution}`);
 
     screen.innerText = buffer;
+    console.log(`buffer = ${buffer} \n screen.innerText = ${screen.innerText}`);
 
     screen.scroll(1000, 0);
 
@@ -49,7 +49,13 @@ function handleSymbol(symbol) {
             flushOperation(parseInt(buffer));
             previousOperator = null;
 
-            historyItemOperation += buffer;
+
+            if (historyItemOperation === null) {
+                historyItemOperation = buffer;
+            } else {
+                historyItemOperation += buffer;
+            }
+            //historyItemOperation += buffer;
             buffer = String(runningTotal);
 
             historyItemSolution += runningTotal;
@@ -123,9 +129,6 @@ function handleMath(symbol) {
 
     previousOperator = symbol;
 
-    console.log(buffer);
-    console.log(previousOperator);
-
     if (historyItemOperation === null) {
         historyItemOperation = buffer;
     } else {
@@ -165,8 +168,23 @@ function init() {
         }
     })
     document.querySelector('.calc__history').addEventListener('click', function (event) {
+        console.log(screen.innerText);
         if (event.target.classList.contains('history__side-buttons_arrow')) {
             event.target.parentNode.classList.toggle('active');
+        } else if (event.target.classList.contains('history__delete')) {
+            console.log('Delet this item')
+        } else if (event.target.closest('.history__item')) {
+
+            let listItem = event.target.closest('.history__item').lastElementChild.lastElementChild.innerText.substring(2);
+            if (screen.innerText !== listItem) {
+                screen.innerText = "0";
+                buffer = "0";
+                buttonClick(listItem);
+            }
+            // let listItem = event.target.closest('.history__item').lastElementChild.lastElementChild.innerText.substring(2);
+            // console.log(listItem);
+            // screen.innerText = listItem;
+            // buttonClick(listItem)
         }
     })
 }

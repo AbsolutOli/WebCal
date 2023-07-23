@@ -182,6 +182,7 @@ body {
   padding: 0.625rem 0.9375rem;
   -webkit-box-shadow: 0 4px 10px rgba(35, 35, 35, 0.1);
           box-shadow: 0 4px 10px rgba(35, 35, 35, 0.1);
+  cursor: pointer;
 }
 .calc .history__item:not(:last-child) {
   margin: 0 0 0.625rem 0;
