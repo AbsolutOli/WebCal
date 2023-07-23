@@ -150,6 +150,7 @@ body {
   top: 1.25rem;
 }
 .calc .history__body {
+  min-width: 228.39px;
   height: 100%;
   display: none;
 }
@@ -182,6 +183,7 @@ body {
   padding: 0.625rem 0.9375rem;
   -webkit-box-shadow: 0 4px 10px rgba(35, 35, 35, 0.1);
           box-shadow: 0 4px 10px rgba(35, 35, 35, 0.1);
+  cursor: pointer;
 }
 .calc .history__item:not(:last-child) {
   margin: 0 0 0.625rem 0;
@@ -288,7 +290,9 @@ body {
   transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
 }
 .calc .active .history__body {
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 .calc__screen {
   font-weight: 700;
